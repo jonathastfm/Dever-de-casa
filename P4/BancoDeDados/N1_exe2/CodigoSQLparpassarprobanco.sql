@@ -61,7 +61,7 @@ INSERT INTO Cliente (
     55,
     11,
     87654321,
-)
+);
 
 INSERT INTO Cliente (
     cpf,
@@ -95,9 +95,9 @@ INSERT INTO Cliente (
     87654321,
     55,
     11,
-    87654321,
+    87654321
     
-)
+);
 
 INSERT INTO Cliente (
     cpf,
@@ -133,7 +133,7 @@ INSERT INTO Cliente (
     11,
     87654321,
 
-)
+);
 
 INSERT INTO Cliente (
     cpf,
@@ -169,7 +169,7 @@ INSERT INTO Cliente (
     11,
     87654321,
 
-)
+);
 
 INSERT INTO Cliente (
     cpf,
@@ -205,4 +205,4 @@ INSERT INTO Cliente (
     11,
     87654321,
 
-)
+);
