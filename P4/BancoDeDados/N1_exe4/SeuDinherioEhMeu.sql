@@ -23,7 +23,7 @@ CREATE TABLE correntista (
 
 
 
-CREATE TABLE Conta (
+CREATE TABLE conta (
     agencia INT NOT NULL,
     numero INT NOT NULL,
     tipo VARCHAR(50) NOT NULL,
