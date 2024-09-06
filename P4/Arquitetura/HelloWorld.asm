@@ -1,22 +1,42 @@
 section .data
+
+    mens db "Insira String: ",10
+    compr equ $ - mens
+
 section .bss
+    buff resb 20
+    qde resd 1
 
-mens db "Hello World!",10
-section .test
 
-global _start 
+section .text
 
-_start:
-    
-    mov edx, compr
-    mov ecx, mens
-    muv ebx, 1
-    muv eax, 4 
-    int 80h
+    global _start 
 
-    jmp sair 
+    _start:
+        
+        mov edx, compr
+        mov ecx, mens
+        mov ebx, 1
+        mov eax, 4 
+        int 80h
 
-sair:
-    mov eax, 1        
-    xor ebx, ebx        
-    int 0x80 
+        mov eax, 3
+        mov ebx, 0
+        mov ecx, buff
+        mov edx, 20
+        int 80h
+
+        mov [qde], eax 
+
+        mov eax, 4
+        mov ebx, 1
+        mov ecx, buff
+        mov edx, [qde]
+        int 80h
+
+        jmp sair
+
+    sair:
+        mov eax, 1                      
+        int 0x80 
+
