@@ -1,6 +1,6 @@
 section .data
 
-    mens db "Insira String: ",10
+    mens db "Bom Semana!",10
     compr equ $ - mens
 
 section .bss
@@ -13,6 +13,10 @@ section .text
     global _start 
 
     _start:
+
+        mov [mens + 2], byte "a"
+         
+
         
         mov edx, compr
         mov ecx, mens
