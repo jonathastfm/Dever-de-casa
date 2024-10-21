@@ -1,6 +1,4 @@
-CREATE DATABASE GYNContrutora;
--- Conectar ao banco de dados GYNConstrutora
-\c GYNConstrutora;
+
 
 -- Tabela de Departamentos
 CREATE TABLE Departamento (
@@ -13,15 +11,15 @@ CREATE TABLE Departamento (
     email VARCHAR(100) NOT NULL
 );
 
--- Tabela de Expecialidade medica
+-- Tabela de Especialidade Médica
 CREATE TABLE EspecialidadeMedica (
     idEspecialidadeMedica SERIAL PRIMARY KEY,
-    descricao VARCHAR(50) NOT NULL unique
+    descricao VARCHAR(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE AreaEngenharia(
     idAreaEngenharia SERIAL PRIMARY KEY,
-    descricao VARCHAR(50) NOT NULL unique
+    descricao VARCHAR(50) NOT NULL UNIQUE
 );
 
 -- Tabela de Colaboradores
@@ -65,8 +63,7 @@ CREATE TABLE Medico (
     FOREIGN KEY (cpf) REFERENCES Colaborador(cpf)
 );
 
-CREATE TABLE ExpecialidadesMedico(
-    
+CREATE TABLE EspecialidadesMedico(
     medico_cpf CHAR(11) PRIMARY KEY,
     especialidade_id INT,
     FOREIGN KEY (medico_cpf) REFERENCES Medico(cpf),
@@ -82,9 +79,26 @@ CREATE TABLE Veiculo (
     modelo VARCHAR(50) NOT NULL,
     marca VARCHAR(50) NOT NULL,
     km_atual INT NOT NULL,
-    motorista_cpf CHAR(11),
-    FOREIGN KEY (motorista_cpf) REFERENCES Motorista(cpf)
+    motorista_cpf CHAR(11),    
+    FOREIGN KEY (motorista_cpf) REFERENCES Motorista(cpf),
+    FOREIGN KEY (modelo) REFERENCES Modelo(idModelo)
+    );
+
+-- Tabela de Modelos
+CREATE TABLE Modelo (
+    idModelo SERIAL PRIMARY KEY,
+    descricao VARCHAR(50) NOT NULL,
+    marca VARCHAR(50) NOT NULL
+    FOREIGN KEY (marca) REFERENCES Marca(idMarca),
+    
 );
+
+-- Tabela de Marcas
+CREATE TABLE Marca (
+    idMarca SERIAL PRIMARY KEY,
+    descricao VARCHAR(50) NOT NULL
+);
+
 
 -- Tabela de Projetos
 CREATE TABLE Projeto (
@@ -93,8 +107,11 @@ CREATE TABLE Projeto (
     endereco VARCHAR(255) NOT NULL,
     orcamento_total DECIMAL(15, 2) NOT NULL,
     engenheiro_responsavel_cpf CHAR(11),
-    FOREIGN KEY (engenheiro_responsavel_cpf) REFERENCES Engenheiro(cpf)
+    idRegistroTecnico INT,
+    FOREIGN KEY (engenheiro_responsavel_cpf) REFERENCES Engenheiro(cpf),
+    FOREIGN KEY (idRegistroTecnico) REFERENCES RegistroTecnico(id)
 );
+
 
 -- Tabela de Consultas Médicas
 CREATE TABLE ConsultaMedica (
