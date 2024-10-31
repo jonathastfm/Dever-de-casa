@@ -1,0 +1,18 @@
+
+
+Cliente (ID_Cliente, Nome, Telefone, Email, Endereco, Tipo_do_Cliente, CPF, Sexo, Data_Nascimento, CNPJ, Razao_Social, Inscricao_Estadual)
+Editora (ID_Editora, Nome, Endereco, Telefone, Nome_Gerente)
+Autor (ID_Autor, Nome)
+Assunto (ID_Assunto, Descricao)
+
+Livro (ISBN, Titulo, Quantidade, ID_Editora, ID_Assunto)
+ID_Editora referencia Editora
+ID_Assunto referencia Assunto
+
+Autoria (ID_Autor, ISBN)
+ID_Autor referencia Autor
+ISBN referencia Livro
+
+Compra (ID_Compra, ISBN, ID_Cliente)
+ISBN referencia Livro
+ID_Cliente referencia Cliente
