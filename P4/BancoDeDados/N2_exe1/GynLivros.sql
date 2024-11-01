@@ -1,8 +1,7 @@
 -- GynLivros.sql
-
 -- Criação da tabela Cliente
 CREATE TABLE Cliente (
-    ID_Cliente INT PRIMARY KEY,
+    ID_Cliente SERIAL PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL,
     Telefone VARCHAR(20),
     Email VARCHAR(100),
@@ -18,7 +17,7 @@ CREATE TABLE Cliente (
 
 -- Criação da tabela Editora
 CREATE TABLE Editora (
-    ID_Editora INT PRIMARY KEY,
+    ID_Editora SERIAL PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL,
     Endereco VARCHAR(255),
     Telefone VARCHAR(20),
@@ -27,13 +26,13 @@ CREATE TABLE Editora (
 
 -- Criação da tabela Autor
 CREATE TABLE Autor (
-    ID_Autor INT PRIMARY KEY,
+    ID_Autor SERIAL PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL
 );
 
 -- Criação da tabela Assunto
 CREATE TABLE Assunto (
-    ID_Assunto INT PRIMARY KEY,
+    ID_Assunto SERIAL PRIMARY KEY,
     Descricao VARCHAR(255) NOT NULL
 );
 
@@ -59,7 +58,7 @@ CREATE TABLE Autoria (
 
 -- Criação da tabela Compra
 CREATE TABLE Compra (
-    ID_Compra INT PRIMARY KEY,
+    ID_Compra SERIAL PRIMARY KEY,
     ISBN VARCHAR(13),
     ID_Cliente INT,
     FOREIGN KEY (ISBN) REFERENCES Livro(ISBN),
