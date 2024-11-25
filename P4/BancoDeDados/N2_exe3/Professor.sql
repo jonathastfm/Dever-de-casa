@@ -1,5 +1,5 @@
 
-CREATE TYPE SexoEnum AS ENUM ('Masculino', 'Feminino');
+
 
 CREATE TABLE Professor (
     matriculaProfessor INT PRIMARY KEY,
