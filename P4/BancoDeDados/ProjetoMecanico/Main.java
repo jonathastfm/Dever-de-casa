@@ -1,26 +1,57 @@
 package ProjetoMecanico;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
+        SwingUtilities.invokeLater(() -> mainScreen());
     }
 
-    private static void createAndShowGUI() {
-        JFrame frame = new JFrame("Hello World Application");
+    private static void mainScreen() {
+        JFrame frame = new JFrame("Exemplo de JFrame");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 200);
+        frame.setResizable(false);
+        frame.setSize(400, 600);
+        
+        // Create a panel 
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 50)); 
 
-        JLabel label = new JLabel("Hello World", JLabel.CENTER);
-        frame.add(label);
+        // Create title label
+        JLabel titleLabel = new JLabel("Mecanica do dimas");
+        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        
+        // Create buttons
+        JButton button1 = new JButton("Carros");
+        JButton button2 = new JButton("Servicos");
+        JButton button3 = new JButton("Funcionarios");
+        
+        // Set button sizes
+        button1.setPreferredSize(new Dimension(200, 50));
+        button2.setPreferredSize(new Dimension(200, 50));
+        button3.setPreferredSize(new Dimension(200, 50));
+        
+        // Add ActionListener to button1
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new CarrosCrud(frame);
+            }
+        });
 
+        panel.add(titleLabel);
+        // Add buttons to the panel
+        panel.add(button1);
+        panel.add(button2);
+        panel.add(button3);
+        
+        // Add the panel to the frame
+        frame.getContentPane().add(panel, BorderLayout.CENTER);
+        
         frame.setVisible(true);
     }
 }
