@@ -43,6 +43,21 @@ public class Main {
             }
         });
 
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ServicosCrud(frame);
+            }
+        });
+
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new FuncionariosCrud(frame);
+            }
+        });
+
+
         panel.add(titleLabel);
         // Add buttons to the panel
         panel.add(button1);

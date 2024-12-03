@@ -3,9 +3,9 @@ package ProjetoMecanico;
 import javax.swing.*;
 import java.awt.*;
 
-public class CarrosCrud {
-    public CarrosCrud(JFrame parent) {
-        JFrame frame = new JFrame("Carros CRUD");
+public class ServicosCrud {
+    public ServicosCrud(JFrame parent) {
+        JFrame frame = new JFrame("Servicos CRUD");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 600);
 
