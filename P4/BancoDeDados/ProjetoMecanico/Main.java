@@ -23,17 +23,23 @@ public class Main {
         // Create title label
         JLabel titleLabel = new JLabel("Mecanica do dimas");
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 22));
         
         // Create buttons
-        JButton button1 = new JButton("Carros");
-        JButton button2 = new JButton("Servicos");
-        JButton button3 = new JButton("Funcionarios");
+        JButton button1 = new JButton("Registrar cliente");
+        JButton button2 = new JButton("Registrar Servicos");
+        JButton button3 = new JButton("Registrar Funcionarios");
+        JButton button4 = new JButton("Carros");
+        JButton button5 = new JButton("Servicos");
+        JButton button6 = new JButton("Funcionarios");
         
         // Set button sizes
-        button1.setPreferredSize(new Dimension(200, 50));
-        button2.setPreferredSize(new Dimension(200, 50));
-        button3.setPreferredSize(new Dimension(200, 50));
+        button1.setPreferredSize(new Dimension(180, 30));
+        button2.setPreferredSize(new Dimension(180, 30));
+        button3.setPreferredSize(new Dimension(180, 30));
+        button4.setPreferredSize(new Dimension(180, 30));
+        button5.setPreferredSize(new Dimension(180, 30));
+        button6.setPreferredSize(new Dimension(180, 30));
         
         // Add ActionListener to button1
         button1.addActionListener(new ActionListener() {
@@ -63,6 +69,9 @@ public class Main {
         panel.add(button1);
         panel.add(button2);
         panel.add(button3);
+        panel.add(button4);
+        panel.add(button5);
+        panel.add(button6);
         
         // Add the panel to the frame
         frame.getContentPane().add(panel, BorderLayout.CENTER);
