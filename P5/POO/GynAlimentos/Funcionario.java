@@ -1,6 +1,9 @@
 import java.text.NumberFormat;
 import java.util.Locale;
 
+// Removed package declaration
+
+
 public class Funcionario {
 
     // --- Atributos de Entrada ---
@@ -19,7 +22,7 @@ public class Funcionario {
     private double salarioLiquido;
 
     // --- Formatação de Moeda ---
-    private static final NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+    private static final NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.of("pt", "BR"));
 
     // --- Construtor ---
     public Funcionario(String matricula, String nome, int numeroDependentes, double salarioBase, int producaoItens) {
