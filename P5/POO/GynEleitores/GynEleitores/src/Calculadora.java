@@ -111,11 +111,7 @@ public class Calculadora {
         return Math.pow(base, expoente);
     }
 
-    /**
-     * Método principal para demonstrar o uso da classe Calculadora.
-     *
-     * @param args Argumentos da linha de comando (não utilizados).
-     */
+   
     
     
 }
