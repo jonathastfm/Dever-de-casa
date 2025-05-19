@@ -116,55 +116,6 @@ public class Calculadora {
      *
      * @param args Argumentos da linha de comando (não utilizados).
      */
-    public static void main(String[] args) {
-        Calculadora calc = new Calculadora();
-
-        System.out.println("--- Operações Básicas ---");
-        System.out.println("Adição (10 + 5): " + calc.adicionar(10, 5)); // 15.0
-        System.out.println("Subtração (10 - 5): " + calc.subtrair(10, 5)); // 5.0
-        System.out.println("Multiplicação (10 * 5): " + calc.multiplicar(10, 5)); // 50.0
-        System.out.println("Divisão (10 / 5): " + calc.dividir(10, 5)); // 2.0
-        System.out.println("Divisão (10 / 4): " + calc.dividir(10, 4)); // 2.5
-
-        System.out.println("\n--- Potência e Raiz ---");
-        System.out.println("Potência (2^3): " + calc.calcularPotencia(2, 3)); // 8.0
-        System.out.println("Potência (5^0.5): " + calc.calcularPotencia(5, 0.5)); // Raiz de 5 ~2.236
-        System.out.println("Raiz Quadrada (16): " + calc.calcularRaizQuadrada(16)); // 4.0
-        System.out.println("Raiz Quadrada (2): " + calc.calcularRaizQuadrada(2)); // ~1.414
-
-        System.out.println("\n--- Fatorial ---");
-        System.out.println("Fatorial (5!): " + calc.calcularFatorial(5)); // 120
-        System.out.println("Fatorial (0!): " + calc.calcularFatorial(0)); // 1
-        System.out.println("Fatorial (1!): " + calc.calcularFatorial(1)); // 1
-        System.out.println("Fatorial (20!): " + calc.calcularFatorial(20)); // 2432902008176640000
-
-        System.out.println("\n--- Testes de Exceção ---");
-        // Teste de divisão por zero
-        try {
-            System.out.println("Divisão (10 / 0): " + calc.dividir(10, 0));
-        } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
-        }
-
-        // Teste de raiz quadrada de número negativo
-        try {
-            System.out.println("Raiz Quadrada (-4): " + calc.calcularRaizQuadrada(-4));
-        } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
-        }
-
-        // Teste de fatorial de número negativo
-        try {
-            System.out.println("Fatorial (-1!): " + calc.calcularFatorial(-1));
-        } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
-        }
-
-        // Teste de fatorial de número muito grande para long
-        try {
-            System.out.println("Fatorial (21!): " + calc.calcularFatorial(21));
-        } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
-        }
-    }
+    
+    
 }
