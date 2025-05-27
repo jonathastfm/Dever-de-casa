@@ -11,18 +11,42 @@ public class Main {
 		
 		double SalarioBruto, gratificacao;
 		
-		try (Scanner ler = new Scanner(System.in)) {
-		
-		System.out.print("Informe o seu nome: ");
-		obj.setNome(ler.next());
-		System.out.print("Informe a matr�cula: ");
-		obj.setMatricula(ler.next());
-		System.out.print("Informe a quantidade de filhos: ");
-		obj.setNumeroDependentes(ler.nextInt());
-		System.out.print("Informe o sal�rio base: ");
-		obj.setSalarioBase(ler.nextDouble());
-		System.out.print("Informe a produ��o: ");
-		obj.setProducaoItens(ler.nextInt());
+		Scanner ler = new Scanner(System.in);
+
+		try {
+			System.out.print("Informe o seu nome: ");
+			obj.setNome(ler.next());
+		} catch (Exception e) {
+			System.out.println("Erro ao ler o nome.");
+		}
+
+		try {
+			System.out.print("Informe a matrícula: ");
+			obj.setMatricula(ler.next());
+		} catch (Exception e) {
+			System.out.println("Erro ao ler a matrícula.");
+		}
+
+		try {
+			System.out.print("Informe a quantidade de filhos: ");
+			obj.setNumeroDependentes(ler.nextInt());
+		} catch (Exception e) {
+			System.out.println("Erro ao ler a quantidade de filhos.");
+		}
+
+		try {
+			System.out.print("Informe o salário base: ");
+			obj.setSalarioBase(ler.nextDouble());
+		} catch (Exception e) {
+			System.out.println("Erro ao ler o salário base.");
+		}
+
+		try {
+			System.out.print("Informe a produção: ");
+			obj.setProducaoItens(ler.nextInt());
+		} catch (Exception e) {
+			System.out.println("Erro ao ler a produção.");
+		}
 		
 		grat.setProducao();
 		grat.setAliquota();
@@ -42,4 +66,4 @@ public class Main {
 	}
 
 }
-}
+
