@@ -1,3 +1,4 @@
+package GynEleitores.src;
 /**
  * A classe Calculadora fornece funcionalidades para realizar diversas operações matemáticas.
  */

@@ -1,3 +1,5 @@
+package GynEleitores.src;
+
 /**
  * A classe ContaPoupanca modela uma conta poupança bancária.
  * Ela possui funcionalidades para depósito, saque, consulta de saldo
