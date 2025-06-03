@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  master:
+    image: alpine
+    container_name: hpc_master
+    command: sh -c "echo 'Master Node Iniciado. Workers irão executar suas tarefas.' && sleep 3600"
+    networks:
+      - hpc_network
+
+  worker:
+    build: .
+    deploy:
+      replicas: 3
+    environment:
+      - NODE_ID={{.Task.Slot}}
+    depends_on:
+      - master
+    networks:
+      - hpc_network
+    # Uncomment and adjust the following lines if you want to mount a folder:
+    # volumes:
+    #   - ./app:/app
+    # working_dir: /app
+    # command: python worker_script.py
+
+networks:
+  hpc_network:
+    driver: bridge
