@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart'; // Importe o core do Firebase
+import 'firebase_options.dart'; // Importe o arquivo gerado pela FlutterFire CLI
+
+// ... (outros imports)
 import 'screens/employee_screen.dart';
 import 'screens/bonus_table_screen.dart';
 import 'screens/inss_table_screen.dart';
 import 'screens/irpf_table_screen.dart';
 
-void main() {
+void main() async {
+  // Garanta que os widgets Flutter estão inicializados
+  WidgetsFlutterBinding.ensureInitialized();
+  // Inicialize o Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

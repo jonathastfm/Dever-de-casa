@@ -28,6 +28,12 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  # The following adds the Flutter SDK as a dependency.
+  # The Flutter SDK is required to build and run Flutter applications.
+  # For more information about Flutter, see https://flutter.dev.
+  firebase_core: ^3.13.1
+  cloud_firestore: ^5.6.8
+
   flutter:
     sdk: flutter
 
