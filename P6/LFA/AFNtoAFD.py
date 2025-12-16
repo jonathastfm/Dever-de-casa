@@ -6,6 +6,13 @@ from tkinter import messagebox
 # A classe AFN e AFD, e a função de conversão devem ser coladas aqui.
 # Por simplicidade, vamos usar as mesmas classes e funções do código anterior.
 
+# estados: A, B, C
+# Alfabeto: 0,1
+# E_inicial: A
+# E_final: C
+# transicoes: A,0->A,B; A,1->A; B,0->C;
+
+
 class AFN:
     def __init__(self, estados, alfabeto, transicoes, estado_inicial, estados_finais):
         self.estados = estados
@@ -28,10 +35,12 @@ class AFD:
 
     def __repr__(self):
         transicoes_str = "\n".join([f"      {estado}: {transicao}" for estado, transicao in self.transicoes.items()])
-        return (f"AFD(Q={self.estados}, Σ={self.alfabeto}, δ={{\n{transicoes_str}\n   }},\n"
-                f"   q0={self.estado_inicial}, F={self.estados_finais})")
+        return (f"AFD(Q={self.estados},\n Σ={self.alfabeto},\n δ={{\n{transicoes_str}\n   }},\n"
+                f"  Inicial ={self.estado_inicial},\n F={self.estados_finais})")
 
 def converter_afn_para_afd(afn):
+    # Implementação do algoritmo de subset construction
+
     novos_estados_afd = []
     novas_transicoes_afd = {}
     
@@ -70,6 +79,77 @@ def converter_afn_para_afd(afn):
 # --- Criação da GUI com Tkinter ---
 
 class ConversorGUI:
+    """
+    Classe ConversorGUI
+    GUI para entrada de um Autômato Finito Não-determinístico (AFN) e conversão
+    para um Autômato Finito Determinístico (AFD) por meio de um botão.
+    Construída sobre tkinter; espera que exista uma classe AFN e uma função
+    converter_afn_para_afd disponíveis no escopo da aplicação.
+    Uso geral
+    - O usuário preenche campos de texto com os componentes da quíntupla do AFN:
+        estados, alfabeto, estado inicial, estados finais e transições.
+    - Ao clicar em "Converter para AFD", o método processar_conversao faz o parse
+        dessas entradas, cria um objeto AFN e invoca converter_afn_para_afd.
+    - O AFD resultante (valor retornado por converter_afn_para_afd) é inserido
+        no widget texto_saida para exibição.
+    Atributos principais (criados em __init__)
+    - master: o widget pai (Tk ou Toplevel).
+    - frame_entrada: LabelFrame contendo widgets de entrada.
+    - entry_estados: Entry para lista de estados do AFN.
+    - entry_alfabeto: Entry para o alfabeto do AFN.
+    - entry_estado_inicial: Entry para o estado inicial.
+    - entry_estados_finais: Entry para os estados finais.
+    - entry_transicoes: Entry para as transições (formato texto).
+    - btn_converter: Button que dispara a conversão (processar_conversao).
+    - frame_saida: LabelFrame contendo saída da quíntupla do AFD.
+    - texto_saida: Text onde o resultado da conversão é exibido.
+    Formato esperado das entradas
+    - Estados: string com nomes separados por vírgula, e.g. "q0,q1,q2".
+    - Alfabeto: símbolos separados por vírgula, e.g. "a,b".
+    - Estado inicial: nome único do estado inicial, e.g. "q0".
+    - Estados finais: nomes separados por vírgula, e.g. "q2,q3".
+    - Transições: sequência de expressões separadas por ';' no formato
+        "estado,simbolo->dest1,dest2". Exemplos válidos:
+            - "q0,a->q1,q2;q1,b->q2"
+            - Espaços ao redor de vírgulas/setas são ignorados.
+        Observações:
+            - Cada transição deve conter exatamente uma vírgula separando o estado
+                de origem do símbolo e a seta "->" apontando para a lista de destinos.
+            - Símbolos vazios/epsilon não são tratados de forma especial pela lógica
+                atual (seria necessário um acordo sobre um token de epsilon, por exemplo
+                '' ou 'ε', e suporte adicional na função de conversão).
+    Processamento (processar_conversao)
+    1. Lê e faz strip das strings de entrada.
+    2. Converte estados, alfabeto e estados finais em conjuntos, removendo
+         entradas vazias.
+    3. Parseia transicoes_str em um dicionário com a forma:
+         transicoes[estado_origem][simbolo] = {dest1, dest2, ...}
+    4. Instancia AFN(estados, alfabeto, transicoes, estado_inicial, estados_finais).
+    5. Chama converter_afn_para_afd(afn_de_entrada) e coloca o resultado em texto_saida.
+    Tratamento de erros
+    - Erros durante o parse ou durante a conversão são capturados e exibidos
+        ao usuário via messagebox.showerror com uma mensagem geral e os detalhes
+        da exceção.
+    - Recomenda-se validação adicional (por exemplo: verificar que o estado
+        inicial pertence ao conjunto de estados, que símbolos em transições
+        pertencem ao alfabeto, e que todos os estados citados existem). A validação
+        atual é básica e pode levantar exceções em caso de sintaxe incorreta.
+    Dependências e requisitos
+    - tkinter importado como tk e messagebox disponível.
+    - Classe AFN e função converter_afn_para_afd definidas/importadas no módulo.
+    - A representação retornada por converter_afn_para_afd deve ser legível
+        (string ou objeto que implemente __str__) para que possa ser inserida
+        diretamente no widget Text.
+    Exemplo de uso (conteúdo dos campos)
+    - Estados: "q0,q1,q2"
+    - Alfabeto: "a,b"
+    - Estado Inicial: "q0"
+    - Estados Finais: "q2"
+    - Transições: "q0,a->q1;q0,b->q0;q1,a->q2"
+    Retorno
+    - Não retorna valor; efeito colateral: atualiza o widget texto_saida com a
+        quíntupla do AFD resultante ou mostra um diálogo de erro em caso de falha.
+    """
     def __init__(self, master):
         self.master = master
         master.title("Conversor de AFN para AFD")
