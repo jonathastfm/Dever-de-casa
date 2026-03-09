@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Grafos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Visualizador de Grafos</h1>
+            <p>Interaja com o grafo: arraste os nós e use o scroll para zoom.</p>
+        </header>
+        <main id="graph-container"></main>
+        <footer>
+            <div id="stats">
+                <span id="node-count">Nós: 0</span>
+                <span id="edge-count">Arestas: 0</span>
+            </div>
+            <button id="refresh-btn">Recarregar Dados</button>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
